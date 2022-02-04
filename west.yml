@@ -1,0 +1,19 @@
+manifest:
+  version: "0.10"
+
+  defaults:
+    revision: main
+
+  remotes:
+    - name: nrfconnect
+      url-base: https://github.com/nrfconnect/
+
+  projects:
+    - name: sdk-nrf
+      remote: nrfconnect
+      path: nrf
+      revision: v1.8.0 
+      import: true
+      
+  self:
+    path: balancing-robot-shield-firmware
