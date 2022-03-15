@@ -1,0 +1,10 @@
+menu "Balancing robot shield"
+endmenu
+
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu
+
+module = APPLICATION_MODULE
+module-str = application
+source "subsys/logging/Kconfig.template.log_config"
