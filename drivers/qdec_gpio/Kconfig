@@ -1,0 +1,9 @@
+menu "GPIO quadrature decoder"
+config QDEC_GPIO
+    bool "Enable gpio quadrature decoder"
+    depends on GPIO
+endmenu
+
+module = QDEC_GPIO_DRIVER
+module-str = qdec gpio driver
+source "subsys/logging/Kconfig.template.log_config"

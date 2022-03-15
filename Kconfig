@@ -1,4 +1,5 @@
 menu "Balancing robot shield"
+rsource "drivers/Kconfig"
 endmenu
 
 menu "Zephyr Kernel"

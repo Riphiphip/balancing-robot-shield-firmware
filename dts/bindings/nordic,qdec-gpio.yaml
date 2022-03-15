@@ -1,0 +1,27 @@
+description: |
+  GPIO based quadrature decoder.
+compatible: "nordic,qdec-gpio"
+
+properties:
+  label:
+    type: string
+    description: |
+      Human readable name for the device.
+
+  line-a-gpios:
+    required: true
+    type: phandle-array
+    description: |
+      Encoder line A
+
+  line-b-gpios:
+    required: true
+    type: phandle-array
+    description: |
+      Encoder line B
+
+  ticks-per-rotation:
+    required: true
+    type: int
+    description: |
+      Number of ticks per rotation
