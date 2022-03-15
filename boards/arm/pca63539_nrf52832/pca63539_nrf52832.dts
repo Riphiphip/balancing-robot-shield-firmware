@@ -1,0 +1,64 @@
+/dts-v1/;
+
+#include <nordic/nrf52832_qfaa.dtsi>
+
+/ {
+	model = "Nordic pca63539 nrf52832";
+	compatible = "nordic,pca63539";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+		zephyr,bt-c2h-uart = &uart0;
+	};
+
+	qdecA: qdecA {
+		    compatible = "nordic,qdec-gpio";
+		    status = "okay";
+		    label = "quadrature encoder A";
+		    line-a-gpios = <&gpio0 10 0>;
+		    line-b-gpios = <&gpio0 9 0>;
+		    ticks-per-rotation = <1400>;
+	};
+
+	qdecB: qdecB {
+		compatible = "nordic,qdec-gpio";
+		status = "okay";
+		label = "quadrature encoder B";
+		line-a-gpios = <&gpio0 22 0>;
+		line-b-gpios = <&gpio0 23 0>;
+		ticks-per-rotation = <1400>;
+	};
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&uart0 {
+	status = "okay";
+	compatible = "nordic,nrf-uarte";
+	current-speed = <115200>;
+	tx-pin = <6>;
+	rx-pin = <7>;
+};
+
+&i2c0 {
+	status = "okay";
+	compatible = "nordic,nrf-twis";
+	label="twis";
+	sda-pin = <15>;
+	scl-pin = <16>;
+	address-0 = <0x50>;
+};
+
+
+
