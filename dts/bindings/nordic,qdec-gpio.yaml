@@ -2,6 +2,8 @@ description: |
   GPIO based quadrature decoder.
 compatible: "nordic,qdec-gpio"
 
+include:  "base.yaml"
+
 properties:
   label:
     type: string
