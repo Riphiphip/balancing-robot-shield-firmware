@@ -51,13 +51,14 @@
 	rx-pin = <7>;
 };
 
-&i2c0 {
+
+&i2c1 {
 	status = "okay";
 	compatible = "nordic,nrf-twis";
 	label="twis";
 	sda-pin = <15>;
 	scl-pin = <16>;
-	address-0 = <0x50>;
+	address-0 = <0x28>;
 };
 
 
