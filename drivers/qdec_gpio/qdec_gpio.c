@@ -100,7 +100,6 @@ static int qdec_gpio_trigger_set(const struct device *dev, const struct sensor_t
 
 static void qdec_line_callback(const struct device *port, struct gpio_callback *cb, uint32_t pins)
 {
-    // static int8_t lookup_table[] = {0, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0};
     static int8_t lookup_table[] = {0, -1, 1, 2, 1, 0, 2, -1, -1, 2, 0, 1, 2, 1, -1, 0};
 
     struct device *dev = CONTAINER_OF(cb, struct qdec_gpio_cb_container, cb)->dev;

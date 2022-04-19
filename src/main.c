@@ -83,7 +83,7 @@ static int twis_init()
     config.scl = DT_PROP(TWIS_NODE, scl_pin);
     config.scl_pull = NRF_GPIO_PIN_PULLUP;
     config.addr[0] = DT_PROP(TWIS_NODE, address_0);
-    // address-1 field is optional. Default to 0.
+    // address-1 field is optional. Default to 0 to disable.
 #if (DT_NODE_HAS_PROP(TWIS_NODE, address_1))
     config.addr[1] = DT_PROP(TWIS_NODE, address_1);
 #else
@@ -103,9 +103,13 @@ static int twis_init()
 
 void main()
 {
-    LOG_DBG("Hello world!");
-    qdecb_dev = device_get_binding(DT_LABEL(DT_NODELABEL(qdecb)));
+    LOG_DBG("Starting shield firmware");
     qdeca_dev = device_get_binding(DT_LABEL(DT_NODELABEL(qdeca)));
-    struct sensor_value val = {0};
+    qdecb_dev = device_get_binding(DT_LABEL(DT_NODELABEL(qdecb)));
+    if (qdeca_dev == NULL || qdecb_dev == NULL)
+    {
+        LOG_ERR("Failed to get bindings for qdec devices");
+        return;
+    }
     twis_init();
 }
